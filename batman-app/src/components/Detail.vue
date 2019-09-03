@@ -31,21 +31,23 @@
 </template>
 
 <script>
-import customAxios from "../services/tvmazeApi.js";
+import { mapActions } from "vuex";
 
 export default {
   name: "Detail",
-  props: ["id"],
   data() {
     return {
-      details: null
+      details: ""
     };
   },
-
   created() {
-    return customAxios.getTvShow(this.$route.params.id).then(response => {
-      this.details = response.data;
+    this.getTvShow(this.$route.params.id).then(response => {
+      this.details = response;
     });
+  },
+
+  methods: {
+    ...mapActions(["getTvShow"])
   }
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h2>Discover</h2>
+
     <p>Batman Tv Shows</p>
     <div class="table-responsive">
       <table id="table-pagination" class="table table-hover" data-toggle="table">
@@ -51,22 +52,16 @@
 </template>
 
 <script>
-import customAxios from "../services/tvmazeApi";
+import { mapState } from "vuex";
+import store from "../store";
+
 export default {
   name: "Show",
-  data() {
-    return {
-      tvShows: null
-    };
-  },
+  computed: mapState(["tvShows"]),
   created() {
-    return customAxios.getTvShows().then(response => {
-      this.tvShows = response.data;
-    });
+    return store.dispatch("getTvShows");
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 </style>
