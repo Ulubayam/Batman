@@ -38,7 +38,9 @@
       </div>
       <router-link :to="{ name: 'home' }" class="backward">
         <a>
+        
           <font-awesome-icon :icon="['fas', 'backward']" class="icon alt" />
+            Geri
         </a>
       </router-link>
     </div>
@@ -55,7 +57,6 @@ export default {
       details: ""
     };
   },
-  created() {},
   mounted() {
     this.getTvShow(this.$route.params.id).then(response => {
       this.details = response;
