@@ -38,9 +38,8 @@
       </div>
       <router-link :to="{ name: 'home' }" class="backward">
         <a>
-        
-          <font-awesome-icon :icon="['fas', 'backward']" class="icon alt" />
-            Geri
+         <font-awesome-icon :icon="['fas', 'backward']" class="icon alt" />
+          Geri
         </a>
       </router-link>
     </div>
