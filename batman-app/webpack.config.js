@@ -25,11 +25,8 @@ const config = {
                     'css-loader',
                     {
                         loader: 'sass-loader',
-
                         options: {
-                            data: `
-                           @import "./src/assets/main.scss;
-            `
+                            indentedSyntax: true
                         }
                     }
                 ]
