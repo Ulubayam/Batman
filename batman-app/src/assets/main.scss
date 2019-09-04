@@ -1,0 +1,19 @@
+$main-bg-color: #000000;
+.container {
+    .img-fluid {
+        .fa-w-16 {
+            float: left;
+        }
+        left: 27%;
+        .card-img-top {
+            height: 600px;
+            opacity: 0.2;
+            filter: alpha(opacity=50);
+        }
+        .card-text {
+            font-weight: bold;
+            color: $main-bg-color;
+            font-style: italic;
+        }
+    }
+}

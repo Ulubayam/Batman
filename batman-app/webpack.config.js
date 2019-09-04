@@ -1,4 +1,3 @@
-// webpack.config.js
 const { VueLoaderPlugin } = require("vue-loader");
 const path = require("path");
 
@@ -14,29 +13,34 @@ const config = {
     },
     optimization: {
         splitChunks: {
-            // Must be specified for HtmlWebpackPlugin to work correctly.
-            // See: https://github.com/jantimon/html-webpack-plugin/issues/882
             chunks: "all"
         }
     },
     module: {
         rules: [{
-                test: /\.vue$/,
-                loader: "vue-loader"
-            },
-            {
-                test: /\.js$/,
-                loader: "babel-loader",
-                include: [path.join(__dirname, "src")]
+
+                test: /\.sass$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+
+                        options: {
+                            data: `
+                           @import "./src/assets/main.scss;
+            `
+                        }
+                    }
+                ]
+
             },
             {
                 test: /\.scss$/,
                 use: [
-                    "vue-style-loader",
-                    "css-loader",
-                    {
-                        loader: "sass-loader"
-                    }
+                    'vue-style-loader',
+                    'css-loader',
+                    'sass-loader'
                 ]
             }
         ]

@@ -15,10 +15,12 @@
           <b>Summary:</b>
           {{ details.summary }}
         </p>
-        <p class="card-text" v-if="details.rating.average">
-          Rating:
-          <b>{{ details.rating.average }}</b>
-        </p>
+        <div v-if="details.rating">
+          <p class="card-text" v-if="details.rating.averange != null">
+            Rating:
+            <b>{{ details.rating.average }}</b>
+          </p>
+        </div>
         <p class="card-text" v-show="details.type">
           Type:
           <b>{{ details.type }}</b>
@@ -29,9 +31,9 @@
             >{{ details.genres[i] }}/</b
           >
         </p>
-        <p class="card-text"> 
+        <p class="card-text">
           Premiered:
-          <b>{{details.premiered}}</b>
+          <b>{{ details.premiered }}</b>
         </p>
       </div>
       <router-link :to="{ name: 'home' }" class="backward">
@@ -53,9 +55,17 @@ export default {
       details: ""
     };
   },
-  created() {
+  created() {},
+  mounted() {
     this.getTvShow(this.$route.params.id).then(response => {
       this.details = response;
+      let str = "";
+      str = this.details.summary
+        .replace("<p>", "")
+        .replace("</p>", "")
+        .replace("<b>", "")
+        .replace("</b>", "");
+      this.details.summary = str;
     });
   },
 
@@ -66,21 +76,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  .img-fluid {
-    .fa-w-16{
-      float: left;
-    }
-    left: 27%;
-    .card-img-top {
-      height: 600px;
-      opacity: 0.2;
-      filter: alpha(opacity=50); /* For IE8 and earlier */
-    }
-    .card-text {
-      font-weight: bold;
-      color: black;
-    }
-  }
-}
+ @import '../assets/main.scss'
+
 </style>
