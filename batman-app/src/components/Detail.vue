@@ -29,6 +29,10 @@
             >{{ details.genres[i] }}/</b
           >
         </p>
+        <p class="card-text"> 
+          Premiered:
+          <b>{{details.premiered}}</b>
+        </p>
       </div>
       <router-link :to="{ name: 'home' }" class="backward">
         <a>
